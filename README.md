@@ -92,7 +92,7 @@ Each of these is a list of addresses (hostname and port) that are part of the di
   - INTRODUCER_ADDRESS = the address of the introducer (this should be common across all machines and the port should be a udp port)
 3. cd into the repository and run the command "go run main.go" on all machines
 4. To join the distributed system type "join"
-5. Here are a list of the other commands you can use"
+5. Here are a list of the other commands you can use
     - grep <pattern> <filename> <output_filename>
     
         Look for a **pattern** across all machines in files named **filename**. Write the lines containing the pattern to an output file.   
