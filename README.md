@@ -93,9 +93,9 @@ Each of these is a list of addresses (hostname and port) that are part of the di
 3. cd into the repository and run the command "go run main.go" on all machines
 4. To join the distributed system type "join"
 5. Here are a list of the other commands you can use
-    - grep <pattern>
+    - grep <hydfs_filename> <local_filename>
     
-        Look for a pattern across all machines in files named filename. Write the lines containing the pattern to an output file.   
+        Look for a pattern across all machines in files named filename. Write the lines containing the pattern to an output file named output_filename.   
     - list_mem_ids
       
         List all machines part of the distributed system. This includes their unique node id, hash value, incarnation number and alive/suspicion status.
