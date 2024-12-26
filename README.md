@@ -95,7 +95,7 @@ Each of these is a list of addresses (hostname and port) that are part of the di
 5. Here are a list of the other commands you can use
     - grep <pattern>
     
-        Look for a **pattern** across all machines in files named **filename**. Write the lines containing the pattern to an output file.   
+        Look for a pattern across all machines in files named filename. Write the lines containing the pattern to an output file.   
     - list_mem_ids
       
         List all machines part of the distributed system. This includes their unique node id, hash value, incarnation number and alive/suspicion status.
