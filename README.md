@@ -67,3 +67,9 @@ append-only file to determine if the tuple has been processed before. If the tup
 a machine failure, the leader assigns replacement workers to take over the failed tasks. The new workers consult the append-only logs to identify which tuples require processing or retransmission. This mechanism also ensures that no tuple is processed more
 than once. To reduce the overhead of frequent communication over TCP, Rainstorm batches streams, acknowledgments, and writes to HyDFS. Every 100 milliseconds, a batch of data is sent to its respective destination, significantly improving efficiency. For stateful
 operations, workers maintain a local file that records the state of processed tuples. This state is persisted to HyDFS every 100 milliseconds. In the event of a failure, the persisted state log allows the server to resume from where the failed process left off.
+
+## Setup
+
+1. Clone the repository onto any machine that will be added to the distributed system.
+2. Set appropriate variables
+- There are a few variables that need to be initialized on each machine:
