@@ -30,3 +30,17 @@ This system enables scalable, fault-tolerant, and efficient processing of real-t
     - Ensures eventual consistency and ordering of operations across replicas.
 
 ## Stream Processing Framework 
+- Real-Time Analytics: Processes continuous streams of data without waiting for batch completion.
+- Stream Operators:
+  - Transform: Applies user-defined functions to input records.
+  - FilteredTransform: Filters and transforms records based on conditions.
+  - AggregateByKey: Maintains state and aggregates records by key.
+- Fault Tolerance:
+  - Implements exactly-once delivery semantics.
+  - Maintains logs of processed records and state for recovery across failures.
+- Data Sources:
+    - Integrates with HyDFS for input data and logs.
+    - Supports continuous data streaming for real-time processing.
+- Scalability:
+    - Dynamically schedules tasks across worker nodes.
+    - Handles worker failures and reschedules tasks seamlessly.
