@@ -126,7 +126,7 @@ Each of these is a list of addresses (hostname and port) that are part of the di
     
         merge the contents of **hydfs_filename** across all replicas in all machines
     - ls
-    - 
+      
         list the hydfs files stored on the machine 
     - rainstorm <op1 _exe> <pattern> <op2 _exe> <stateful> <hydfs_src_file> <hydfs_dest_filename> <num_tasks>
     
