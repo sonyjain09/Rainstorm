@@ -9,44 +9,11 @@ import (
 
 var err = godotenv.Load(".env")
 
-var Tcp_ports = []string{
-    "fa24-cs425-1201.cs.illinois.edu:8081", 
-    "fa24-cs425-1202.cs.illinois.edu:8082", 
-    "fa24-cs425-1203.cs.illinois.edu:8083", 
-    "fa24-cs425-1204.cs.illinois.edu:8084", 
-    "fa24-cs425-1205.cs.illinois.edu:8085", 
-    "fa24-cs425-1206.cs.illinois.edu:8086", 
-    "fa24-cs425-1207.cs.illinois.edu:8087", 
-    "fa24-cs425-1208.cs.illinois.edu:8088", 
-    "fa24-cs425-1209.cs.illinois.edu:8089",
-    "fa24-cs425-1210.cs.illinois.edu:8080",
-}
+var Tcp_ports = []string{}
 
-var Udp_ports = []string{
-    "fa24-cs425-1201.cs.illinois.edu:9081", 
-    "fa24-cs425-1202.cs.illinois.edu:9082", 
-    "fa24-cs425-1203.cs.illinois.edu:9083", 
-    "fa24-cs425-1204.cs.illinois.edu:9084", 
-    "fa24-cs425-1205.cs.illinois.edu:9085", 
-    "fa24-cs425-1206.cs.illinois.edu:9086", 
-    "fa24-cs425-1207.cs.illinois.edu:9087", 
-    "fa24-cs425-1208.cs.illinois.edu:9088", 
-    "fa24-cs425-1209.cs.illinois.edu:9089",
-    "fa24-cs425-1210.cs.illinois.edu:9080",
-}
+var Udp_ports = []string{}
 
-var Rainstorm_ports = []string{
-    "fa24-cs425-1201.cs.illinois.edu:7081", 
-    "fa24-cs425-1202.cs.illinois.edu:7082", 
-    "fa24-cs425-1203.cs.illinois.edu:7083", 
-    "fa24-cs425-1204.cs.illinois.edu:7084", 
-    "fa24-cs425-1205.cs.illinois.edu:7085", 
-    "fa24-cs425-1206.cs.illinois.edu:7086", 
-    "fa24-cs425-1207.cs.illinois.edu:7087", 
-    "fa24-cs425-1208.cs.illinois.edu:7088", 
-    "fa24-cs425-1209.cs.illinois.edu:7089",
-    "fa24-cs425-1210.cs.illinois.edu:7080",
-}
+var Rainstorm_ports = []string{}
 
 
 var Tcp_port string = os.Getenv("TCP_PORT")
