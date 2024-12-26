@@ -75,7 +75,7 @@ operations, workers maintain a local file that records the state of processed tu
   - Tcp_ports
   - Udp_ports
   - Rainstorm_ports
-  - 
+    
 Each of these is a list of addresses (hostname and port) that are part of the distributed system. The hostnames should be the same across all of the lists. For best functionality, make all of the ports different across the lists.
 - In the .env file:
   - TCP_PORT = machines own tcp port value
