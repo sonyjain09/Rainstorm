@@ -20,7 +20,7 @@ down, no new nodes can join, but existing processes continue as normal. In the b
 lead to inaccuracies, which are fixed by Ping-Ack+S. In the Ping-Ack+S implementation, a missed acknowledgment places the node in a "suspected" state for 8 seconds, instead of marking it as failed. All machines are notified and update their lists. The
 node increments its incarnation number during suspicion. If it responds within 8 seconds to any machine, its status is set back to "alive" with an updated incarnation number. Otherwise, it is marked as "failed" on all machines. Each machine is pinged by at least
 4 others every 5 seconds, ensuring fast failure detection, even with up to 3 simultaneous failures. Failure information is broadcast immediately to all machines. The 1.5-second timeout quickly flags unresponsive nodes as suspicious, while the
-Ping-Ack+S mechanism waits 8 seconds before marking a node as failed, allowing time for recovery from network issues.
+  Ping-Ack+S mechanism waits 8 seconds before marking a node as failed, allowing time for recovery from network issues.
 
 ## Hybrid Distributed File System 
 - Consistent Hashing: Distributes file blocks across servers in a decentralized manner for scalability.
@@ -69,7 +69,53 @@ than once. To reduce the overhead of frequent communication over TCP, Rainstorm 
 operations, workers maintain a local file that records the state of processed tuples. This state is persisted to HyDFS every 100 milliseconds. In the event of a failure, the persisted state log allows the server to resume from where the failed process left off.
 
 ## Setup
-
 1. Clone the repository onto any machine that will be added to the distributed system.
 2. Set appropriate variables
-- There are a few variables that need to be initialized on each machine:
+- In the global/global-vars.go file there are 3 variables that need to be set:
+  - Tcp_ports
+  - Udp_ports
+  - Rainstorm_ports
+Each of these is a list of addresses (hostname and port) that are part of the distributed system. The hostnames should be the same across all of the lists. For best functionality, make all of the ports different across the lists.
+- In the .env file:
+  - TCP_PORT = machines own tcp port value
+  - UDP_PORT = machines own udp port value
+  - RAINSTORM_PORT=machines own rainstorm port value
+  - MACHINE_NUMBER = assign each machine a number, based on its index in the created lists above  
+  - MEMBERSHIP_FILENAME = debugging log for membership functionality
+  - HYDFS_FILENAME = debugging log for hydfs functionality
+  - RAINSTORM_FILENAME = debugging log for rainstorm functionality
+  - MACHINE_UDP_ADDRESS = machines own udp address value
+  - MACHINE_TCP_ADDRESS = machines own tcp address value
+  - MACHINE_RAINSTORM_ADDRESS = machines own rainstorm address value
+  - LEADER_ADDRESS = the address of the leader (this should be common across all machines and the port should be a rainstorm port)
+  - INTRODUCER_ADDRESS = the address of the introducer (this should be common across all machines and the port should be a udp port)
+3. cd into the repository and run the command "go run main.go" on all machines
+4. To join the distributed system type "join"
+5. Here are a list of the other commands you can use"
+    - grep <pattern> <filename> <output_filename>
+        Look for a **pattern** across all machines in files named **filename**. Write the lines containing the pattern to an output file.   
+    - list_mem_ids
+        List all machines part of the distributed system. This includes their unique node id, hash value, incarnation number and alive/suspicion status.
+    - leave
+        Leave the distributed system, with the ability to join back again later with the same node id.
+    - enable_sus
+        Enable the suspicion mechanism.
+    - disable_sus
+        Disable the suspicion mechanism.
+    - status_sus
+        View the current status of the suspicion mechanism.
+    - list_sus
+        List all nodes in the membership system that are currently suspected.
+    - get <hydfs_filename> <local_filename>
+        get a file named **hydfs_filename** from hydfs and store its contents in **local_filename**
+    - create <local_filename> <hydfs_filename>
+        create a file named **hydfs_filename** in hydfs using the contents from **local_filename**
+    - append <local_filename> <hydfs_filename>
+        append the contents of **local_filename** into the hydfs file **hydfs_filename**
+    - merge <hydfs_filename>
+        merge the contents of **hydfs_filename** across all replicas in all machines
+    - ls
+        list the hydfs files stored on the machine 
+    - rainstorm <op1 _exe> <pattern> <op2 _exe> <stateful> <hydfs_src_file> <hydfs_dest_filename> <num_tasks>
+        perform a streaming task with 2 executables. You have the ability to put in a pattern and specify whether its stateful or not. State which **hydfs_src_file** will provide the input and the name of the file
+        for the output of the streams (**hydfs_dest_filename**). Specify the number of tasks (**num_tasks**) desired for each stage in the job. 
