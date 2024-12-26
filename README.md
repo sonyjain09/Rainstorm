@@ -93,29 +93,42 @@ Each of these is a list of addresses (hostname and port) that are part of the di
 4. To join the distributed system type "join"
 5. Here are a list of the other commands you can use"
     - grep <pattern> <filename> <output_filename>
+    
         Look for a **pattern** across all machines in files named **filename**. Write the lines containing the pattern to an output file.   
     - list_mem_ids
+      
         List all machines part of the distributed system. This includes their unique node id, hash value, incarnation number and alive/suspicion status.
     - leave
+      
         Leave the distributed system, with the ability to join back again later with the same node id.
     - enable_sus
+      
         Enable the suspicion mechanism.
     - disable_sus
+      
         Disable the suspicion mechanism.
     - status_sus
+      
         View the current status of the suspicion mechanism.
     - list_sus
+      
         List all nodes in the membership system that are currently suspected.
     - get <hydfs_filename> <local_filename>
+    
         get a file named **hydfs_filename** from hydfs and store its contents in **local_filename**
     - create <local_filename> <hydfs_filename>
+    
         create a file named **hydfs_filename** in hydfs using the contents from **local_filename**
     - append <local_filename> <hydfs_filename>
+    
         append the contents of **local_filename** into the hydfs file **hydfs_filename**
     - merge <hydfs_filename>
+    
         merge the contents of **hydfs_filename** across all replicas in all machines
     - ls
+    - 
         list the hydfs files stored on the machine 
     - rainstorm <op1 _exe> <pattern> <op2 _exe> <stateful> <hydfs_src_file> <hydfs_dest_filename> <num_tasks>
+    
         perform a streaming task with 2 executables. You have the ability to put in a pattern and specify whether its stateful or not. State which **hydfs_src_file** will provide the input and the name of the file
         for the output of the streams (**hydfs_dest_filename**). Specify the number of tasks (**num_tasks**) desired for each stage in the job. 
