@@ -125,7 +125,7 @@ Each of these is a list of addresses (hostname and port) that are part of the di
     - ls
       
         list the hydfs files stored on the machine 
-    - rainstorm <op1 _exe> <pattern> <op2 _exe> <stateful> <hydfs_src_file> <hydfs_dest_filename> <num_tasks>
+    - rainstorm <op1_exe> <pattern> <op2_exe> <stateful> <hydfs_src_file> <hydfs_dest_filename> <num_tasks>
     
         perform a streaming task with 2 executables. You have the ability to put in a pattern and specify whether its stateful or not. State which **hydfs_src_file** will provide the input and the name of the file
         for the output of the streams (**hydfs_dest_filename**). Specify the number of tasks (**num_tasks**) desired for each stage in the job.
