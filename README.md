@@ -18,9 +18,8 @@ This system enables scalable, fault-tolerant, and efficient processing of real-t
 taken based on the suspicion mechanism. We created an introducer machine to handle new machines joining the system. It listens for join requests, adds new nodes, and shares the updated membership list with all new machines that join. If the introducer is
 down, no new nodes can join, but existing processes continue as normal. In the basic Ping-Ack process, if no acknowledgment is received, the node is immediately removed, and a failure message is broadcast to the system for quick detection. However, this can
 lead to inaccuracies, which are fixed by Ping-Ack+S. In the Ping-Ack+S implementation, a missed acknowledgment places the node in a "suspected" state for 8 seconds, instead of marking it as failed. All machines are notified and update their lists. The
-node increments its incarnation number during suspicion. If it responds within 8 seconds to any machine, its status is set back to "alive" with an updated incarnation number. Otherwise, it is marked as "failed" on all machines. Each machine is pinged by at least
-4 others every 5 seconds, ensuring fast failure detection, even with up to 3 simultaneous failures. Failure information is broadcast immediately to all machines. The 1.5-second timeout quickly flags unresponsive nodes as suspicious, while the
-  Ping-Ack+S mechanism waits 8 seconds before marking a node as failed, allowing time for recovery from network issues.
+node increments its incarnation number during suspicion. If it responds within 8 seconds to any machine, its status is set back to "alive" with an updated incarnation number. Otherwise, it is marked as "failed" on all machines. Failure information is
+broadcast immediately to all machines. The 1.5-second timeout quickly flags unresponsive nodes as suspicious, while the Ping-Ack+S mechanism waits 8 seconds before marking a node as failed, allowing time for recovery from network issues.
 
 ## Hybrid Distributed File System 
 - Consistent Hashing: Distributes file blocks across servers in a decentralized manner for scalability.
