@@ -13,7 +13,6 @@ This system enables scalable, fault-tolerant, and efficient processing of real-t
 - A membership service that maintains a list of active machines in the system.
 - Detects machine failures, joins, and leaves using a Ping-Ack failure detection algorithm with and without suspicion mechanisms.
 - Ensures time-bounded completeness, updating membership lists across all nodes within 10 seconds.
-- Logs events like node joins, leaves, and failures for debugging and querying.
 - Design Summary: Each machine maintains a full and accurate membership list, pinging a randomly selected node every 0.5 seconds. If no acknowledgment is received within 1.5 seconds, the node is flagged and further action is
 taken based on the suspicion mechanism. We created an introducer machine to handle new machines joining the system. It listens for join requests, adds new nodes, and shares the updated membership list with all new machines that join. If the introducer is
 down, no new nodes can join, but existing processes continue as normal. In the basic Ping-Ack process, if no acknowledgment is received, the node is immediately removed, and a failure message is broadcast to the system for quick detection. However, this can
